@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Exchange rates</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel='stylesheet' type='text/css' href='./node_modules/bootstrap/dist/css/bootstrap.css'> -->
+    <script type="module" src='index.js'></script>
+</head>
+<body>
+    <div id="main-box">
+        <div id="main-content">
+        <div class="header">
+
+            <img src="./src/img/logo2.png" alt="logo" width="40" height="40"> 
+            <div class="header-right">
+            <a class="header-link" href="#home" id="link-01">SEND MONEY</a>
+            <div class="collap link-01">
+                <p>I'm a collapsible</p>
+            </div>
+            <a class="header-link" href="#home" id="link-02">BUSINESS & API</a>
+            <div class="collap link-02">
+                <p>I'm a collapsible</p>
+            </div>
+            <a class="header-link" href="#home" id="link-03">TOOLS</a>
+            <div class="collap link-03">
+                <p>I'm a collapsible</p>
+            </div>
+            <a class="header-link" href="#home" id="link-04">RESOURCES</a>
+            <div class="collap link-04">
+                <p>I'm a collapsible</p>
+            </div>
+            <a class="header-button" href="#home">HOME</a>
+            <a class="header-button" href="#contact">GET THE APP</a>
+            <a class="header-button login-btn" href="#about">Log In</a>
+            </div>
+        </div> 
+
+
+        <h1 id="currency-title">Currency Converter</h1>
+        <div align="center">
+        <div id="exchange-box">
+            <strong>Please fill in the form to access a list of exchange rates according to your preferences</strong>
+            <br>
+            <form>
+                <div class="container">
+                    <div class="row form-rows justify-content-md-center">
+                      <div class="col-sm">
+                        <select id="inputState" class="form-control form-input">
+                            <option selected>Currency</option>
+                            <option>...</option>
+                          </select>
+                      </div>
+                      <div class="col-sm">
+                        <div class="input-group mb-2 form-input">
+                            <div class="input-group-prepend">
+                            <div class="input-group-text">Date</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Date">
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="input-group mb-2 form-input">
+                            <div class="input-group-prepend">
+                            <div class="input-group-text">Amount</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Amount">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row form-rows justify-content-md-center">
+                        <div class="col-sm">
+                        <button class="btn btn-outline-light">Convert</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="not-display" id="conversion-box">
+        <!--here will go the conversion table-->
+    </div>
+    <div id="info-box">
+        <div align="center">
+            <div class="row justify-content-md-center">
+                <div class="col-sm info-quadrant">
+                    <img src="./src/img/award.png" alt="about-us"><br>
+                    <strong class="quadrant-title">Proudly serving our clients since 2020</strong>
+                    <ul>
+                        <li>World's trusted</li>
+                        <li>280 million visitors a year</li>
+                        <li>65 million app downloads</li>
+                    </ul>
+                </div>
+
+                <div class="col-sm info-quadrant">
+                    <img src="./src/img/infinity.png" alt="API"><br>
+                    <strong class="quadrant-title">Currency data API</strong>
+                    <ul>
+                        <li>Accurate rates for businesses</li>
+                        <li>Simple integration</li>
+                        <li>Flexible packages</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-sm info-quadrant inferior">
+                    <img src="./src/img/alert2.png" alt="alerts"><br> 
+                    <strong class="quadrant-title">Rate alerts</strong>
+                    <ul>
+                        <li>Choose a currency pair</li>
+                        <li>Set your desired mid-market rate</li>
+                        <li>Receive free alerts by mail</li>
+                    </ul>
+                </div>
+
+                <div class="col-sm info-quadrant inferior">
+                    <img src="./src/img/sparkles.png" alt="app"><br>
+                    <strong class="quadrant-title">Our currency app</strong>
+                    <br>
+                    <img src="./src/img/google_play_badge.png" alt="google play" width="20%">
+                    <img src="./src/img/apple_store_badge.png" alt="apple store" width="20%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-footer fixed">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="container">Copyright &copy; 2020 Duck</div>  
+                </div>
+                <div class="col-md-3">
+                    <strong class="footer-title">IMAGES</strong>
+                </div>
+                <div class="col-md-3">
+                    <strong class="footer-title">SITE INFO</strong>
+                </div>
+            </div>
+
+        
+            <div class="row">
+                <div class="col-md-5"> 
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="https://www.freepik.es/fotos-vectores-gratis/fondo" style="text-decoration:none">Background vector by starline</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="https://exchangeratesapi.io/" style="text-decoration:none">Exchange rates API</a>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-5"> 
+                </div>
+                <div class="col-md-3">
+                    <a href="https://www.freepik.com/free-vector/money-icons_785252.htm" style="text-decoration:none">Money logo by freepik</a>
+                </div>
+                <div class="col-md-3">
+                    <a href="https://www.xe.com/" style="text-decoration:none">Inspired by XE</a>
+                    
+                </div>
+        
+            </div>
+            <div class="row">
+                <div class="col-md-5"> 
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <a href="https://github.com/pvmelli" style="text-decoration:none">pvmelli</a>
+                </div>
+        </div>
+      
+    
+    </div>
+</body>
+</html>
