@@ -1,2 +1,2 @@
 # Exchange-rates
-Exchange rates project
+https://pvmelli.github.io/Exchange-rates/
