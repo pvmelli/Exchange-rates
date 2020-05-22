@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--<link rel='stylesheet' type='text/css' href='./node_modules/bootstrap/dist/css/bootstrap.css'> -->
-    <script type="module" src='index.js'></script>
+
 </head>
 <body>
     <div class="login-modal not-display" id="login-modal">
@@ -155,17 +155,15 @@
                 <div class="container">
                     <div class="row form-rows justify-content-md-center">
                       <div class="col-sm">
-                        <select id="inputState" class="form-control form-input">
-                            <option selected>Currency</option>
-                            <option>...</option>
-                          </select>
+                        <select class="form-control form-input" id="select-menu">
+                        </select>
                       </div>
                       <div class="col-sm">
                         <div class="input-group mb-2 form-input">
                             <div class="input-group-prepend">
                             <div class="input-group-text">Date</div>
                             </div>
-                            <input type="text" class="form-control" id="dateInput" placeholder="Date">
+                            <input type="date" class="form-control" id="dateInput" value="2020-01-01" min="1999-01-01">
                         </div>
                       </div>
                       <div class="col-sm">
@@ -174,12 +172,15 @@
                             <div class="input-group-text">Amount</div>
                             </div>
                             <input type="text" class="form-control" id="amountInput" placeholder="Amount">
+                            <div class="invalid-feedback" id="amount-error">
+                                
+                              </div>
                         </div>
                       </div>
                     </div>
                     <div class="row form-rows justify-content-md-center">
                         <div class="col-sm">
-                        <button class="btn btn-outline-light">Convert</button>
+                        <button class="btn btn-outline-light" id="convert-button">Convert</button>
                         </div>
                     </div>
                 </div>
@@ -306,5 +307,8 @@
                 </div>
             </div>
         </div>
+
+
+    <script type="module" src='index.js'></script>
 </body>
 </html>
