@@ -1,6 +1,3 @@
-//     loadCurrencyListFromLocalStorage,
-// saveCurrencyListToLocalStorage
-
 export function loadCurrencyListFromLocalStorage(list) {
     const currencyList = JSON.parse(localStorage.getItem(list));
 
@@ -11,14 +8,13 @@ export function saveCurrencyListToLocalStorage(list, currencyListData) {
     localStorage.setItem(list, JSON.stringify(currencyListData));
 };
 
-/* export function loadPokemonDataFromLocalStorage(pokemonName){
-    let pokemonData = JSON.parse(localStorage.getItem(pokemonName));
-    
-    return pokemonData;
+export function loadExchangeRatesDataFromLocalStorage(date, base) {
+    const exchangeRatesData = JSON.parse(localStorage.getItem(`${date}-${base}`));
+
+    return exchangeRatesData;
 };
 
-export function savePokemonDataToLocalStorage (pokemonName, pokemonData){
-    localStorage.setItem(pokemonName, JSON.stringify(pokemonData));
- };
- */
+export function saveExchangeRatesDataToLocalStorage (date, base, exchangeRatesData) {
+    localStorage.setItem(`${date}-${base}`, JSON.stringify(exchangeRatesData));
+};
 
