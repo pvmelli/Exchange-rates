@@ -4,6 +4,8 @@ import {
     addEventListeners
 } from '../utilities/utilities.js'
 
+import {manageExchange} from './infolist.js';
+
 export async function fillCurrencySelect () {
     const currencyMenu = document.querySelector('#select-menu');
 
@@ -119,10 +121,5 @@ function showAmountError(error) {
 
 function addConvertButtonEventListener() {
     const convertButton = document.querySelector('#convert-button');
-    addEventListeners(convertButton, 'click', test)
-
-}
-
-function test() {
-
+    addEventListeners(convertButton, 'click', manageExchange)
 };

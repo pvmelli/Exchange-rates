@@ -1,6 +1,8 @@
 import {
     loadCurrencyListFromLocalStorage,
-    saveCurrencyListToLocalStorage
+    saveCurrencyListToLocalStorage,
+    loadExchangeRatesDataFromLocalStorage,
+    saveExchangeRatesDataToLocalStorage
 } from '../storage/storage.js';
 
 import {loadDataFromApi} from '../api/api.js';
@@ -13,7 +15,7 @@ export async function getCurrencies() {
         } else {
             return currencyList;
         }
-    } catch (e) {
+    } catch (error) {
         try {
             const currencyData = await loadDataFromApi('latest');
             
@@ -30,6 +32,29 @@ export async function getCurrencies() {
             return null;
         };
     };
+};
+
+export async function getExchangeData(date, base) {
+    try {
+        let exchangeData = loadExchangeRatesDataFromLocalStorage(date, base);
+
+        if (exchangeData === null) {
+            throw error;
+        } else {
+            return exchangeData;
+        }
+    } catch(error) {
+        try {
+            const exchangeData = await loadDataFromApi(date, base);
+
+            saveExchangeRatesDataToLocalStorage (date, base, exchangeData);
+            
+            return exchangeData;
+        }catch(e) {
+            return null;
+        };
+    };
+
 };
 
 /*     try {

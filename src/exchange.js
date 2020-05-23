@@ -9,9 +9,7 @@ export function initialize() {
     window.onload = () => {
         addInitialEventListeners();
         fillCurrencySelect();
-        setMaxDateOfInput();
-        
-    }
-    //add initial event listeners
-    // add currencies
+        setMaxDateOfInput();        
+    };
+
 };

@@ -206,6 +206,17 @@
     border-radius: 4px;
 }
 
+#conversion-box {
+    background-color: white;
+    border-top: 5px solid #17a7e6;
+    padding: 3% 25% 3%;
+    text-align: center;
+}
+
+#conversion-box h1 {
+    font-family: monospace;
+}
+
 #info-box {
     background-color: white;
     border-top: 5px solid #17a7e6;
