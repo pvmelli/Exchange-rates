@@ -13,7 +13,7 @@ export async function manageExchange () {
 function fetchInput () {
     const date = document.querySelector('#dateInput').value;
     const currency = document.querySelector('#select-menu').value;
-    const amount = amountFormatter(document.querySelector('#amountInput').value);
+    const amount = amountFormatter(document.querySelector('#amountInput').value.trim());
 
     const inputArray = [date, currency, amount];
 
@@ -26,7 +26,9 @@ function amountFormatter(value) {
         amount = '1';
     }else if (value.search(',')){
         amount = value.replace(',','.')
-    };
+    } else {
+        amount = value;
+    }
     return amount;
 };
 
