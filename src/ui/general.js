@@ -8,9 +8,8 @@ import {addFormEventListeners} from './form.js';
 export function addInitialEventListeners() {
     addHeaderEventListeners();
     addFormEventListeners();
+    
 };
-
-
 
 window.onclick = manageClicksOutsideElements;
 

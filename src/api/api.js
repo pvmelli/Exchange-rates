@@ -3,10 +3,6 @@ export async function loadDataFromApi (date, base='EUR') {
     let data = await response.json();
 
     return data;
-    /* const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/?offset=${offset}&limit=${limit}`);
-    let data = await response.json();
-
-    return data;*/
-}
+};
 
 

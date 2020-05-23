@@ -1,4 +1,5 @@
 import {getExchangeData} from '../services/exchangerates.js';
+import {assignScrollToTopEventListener} from '../utilities/utilities.js';
 
 export async function manageExchange () {
     const inputArray = fetchInput();
@@ -6,6 +7,7 @@ export async function manageExchange () {
     fillInfoBoxWithLoading();
     makeInfoBoxVisible();
     fillInfoBox(exchangeData, inputArray[2]);
+    appendToTopButton();
 }
 
 function fetchInput () {
@@ -47,8 +49,6 @@ function fillInfoBox(exchangeData, amount) {
     infoBox.innerHTML = '';
     setTitle(exchangeData, infoBox);
     setTable(exchangeData, amount, infoBox)
-
-    // set table
 
 };
 
@@ -106,87 +106,19 @@ function fillARateBodyRow(titleData, valueData, amount, container) {
     container.appendChild(row);
 };
 
-/* function fillTable(obj, input) {
-        for (const prop in obj) {
-            const $tBody = document.querySelector('#exchange-tbody');
-            const $tr = document.createElement('tr');
-            const $currencyTh = document.createElement('th');
-            const $exchangeOne = document.createElement('td');
-            $exchangeOne.setAttribute('id', `${prop}-exchange`)
+function appendToTopButton() {
+    const infoBox = document.querySelector('#conversion-box');
 
-            const currency = prop;
-            $currencyTh.innerText = currency;
+    const toTopButton = document.createElement('button')
+    toTopButton.setAttribute('type', 'button');
+    toTopButton.setAttribute('id', 'topButton');
+    toTopButton.innerText = 'Back To Top'
+    toTopButton.classList.add('btn');
+    toTopButton.classList.add('btn-outline-light');
+    toTopButton.style.color = '#43bbef';
+    toTopButton.style.border = '1px solid #43bbef';
 
-            const exchangeRate = obj[prop].toFixed(2);
-            $exchangeOne.innerText = exchangeRate;
+    infoBox.appendChild(toTopButton);
 
-            $tr.appendChild($currencyTh);
-            $tr.appendChild($exchangeOne);
-
-            if (Number(input[2]) !== 1) {
-                const $exchangeAmount = document.createElement('td');
-                const exchangeForAmount = obj[prop] * Number(input[2]);
-                $exchangeAmount.innerText = exchangeForAmount.toFixed(2);                
-                $tr.appendChild($exchangeAmount);
-                };
-
-
-
-            $tBody.appendChild($tr);
-        };
-
-        const inputAmount = Number(input[2]);
-
-        if (inputAmount !== 1) {
-            createAnotherColumnTitle(input);
-        };
-        
-
-    };
-
-    function createAnotherColumnTitle(input) {
-        const $tableHead = document.querySelector('#table-head')
-        const $th = document.createElement('th');
-        $th.setAttribute('scope', 'col');
-
-
-
-        const $amountDiv = document.createElement('div');
-        $amountDiv.setAttribute('id','your-amount');
-        $amountDiv.innerText = input[2];
-        $th.appendChild($amountDiv);
-
-        const $currencyDiv = document.createElement('div');
-        $currencyDiv.innerText = input[1];
-        $th.appendChild($currencyDiv);
-
-        $tableHead.appendChild($th);
-    }
-
-    function clearTable(){
-        const $tBody = document.querySelector('#exchange-tbody');
-        $tBody.innerHTML = '';
-        const $tableHead = document.querySelector('#table-head')
-        $tableHead.innerHTML = '';
-    };
-
-    function createTable(input) {
-        const date = document.querySelector('#date-output');
-        date.innerText = input[0];
-        const $tableBox = document.querySelector('#exchange-list');
-        $tableBox.classList.remove('not-display');
-
-
-        const $tableHead = document.querySelector('#table-head')
-        const $currencyTh = document.createElement('th');
-        $currencyTh.setAttribute('scope', 'col');
-        $currencyTh.innerText = 'Currency';
-
-        const $exchangeTh = document.createElement('th');
-        $exchangeTh.setAttribute('scope', 'col');
-        $exchangeTh.innerText = input[1];
-
-        $tableHead.appendChild($currencyTh);
-        $tableHead.appendChild($exchangeTh);
-    }; */
-
+    assignScrollToTopEventListener ('#topButton', 'click');
+};
