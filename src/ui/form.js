@@ -1,7 +1,6 @@
 import {getCurrencies} from '../services/exchangerates.js';
 import {
-    getTodaysDate,
-    addEventListeners
+    getTodaysDate
 } from '../utilities/utilities.js'
 
 import {manageExchange} from './infolist.js';
@@ -20,6 +19,7 @@ export async function fillCurrencySelect () {
 
 function createCurrencyOptions(currency) {
     const option = document.createElement('option')
+    option.classList.add('option');
     option.setAttribute('value', currency);
     option.innerText = currency;
     return option;
@@ -34,64 +34,75 @@ export function setMaxDateOfInput() {
 }
 
 export function addFormEventListeners() {
-    addDateFieldEventListener();
-    addAmountFieldEventListener();
-    addConvertButtonEventListener();
-}
-
-function addDateFieldEventListener() {
     const dateField = document.querySelector('#dateInput');
-    addEventListeners(dateField, 'input', verifyDate)
+    dateField.addEventListener('input', manageDateVerification);
+
+    const amountField = document.querySelector('#amountInput');
+    amountField.addEventListener('input', manageAmountVerification);
+
+    const convertButton = document.querySelector('#convert-button');
+    convertButton.addEventListener('click', manageExchange);
 };
 
-function verifyDate(e) {
-    const input = e.target;
+function verifyDate(input) {
     input.reportValidity()
 
     if(!input.reportValidity()){
-        disableConvertButton();
+        return 'error';
     }else{
-        enableConvertButton();
+       return 'success';
     }
-
 };
 
-function addAmountFieldEventListener() {
-    const amountField = document.querySelector('#amountInput');
-    addEventListeners(amountField, 'input', verifyAmount);
+export function manageDateVerification(e) {
+    const input = e.target;
 
-}
+    const result = verifyDate(input);
 
-function verifyAmount(e) {
-    clearAmountError();
-    let input = e.target.value;
+    if (result === 'error'){
+        disableConvertButton();
+        return 'There was an error';
+    } else {
+        enableConvertButton();
+        return 'The date was verified';
+    }
+};
 
+function verifyAmount(input) {
     if(Boolean(input.search(','))){
         input = input.replace(',', '.');
     }
 
     if (input.trim() === '' || Number(input.trim()) > 0){
-        enableConvertButton();
-        return '';
+        return 'success';
     }
 
     const onlyNumbers = /[^0-9]/;
-
     if (Number(input.trim()) < 0){
-        showAmountError('This field cannot have a negative number');
-        disableConvertButton();
-        return '';
+        return 'This field cannot have a negative number';
     };
     if (onlyNumbers.test(input.trim())){
-        showAmountError('This field can only contain numbers');
-        disableConvertButton();
-        return '';
+        return 'This field can only contain numbers';
     };
 
     if (Number(input.trim()) === 0){
-        showAmountError('This field cannot be 0');
+        return 'This field cannot be 0';
+    };
+};
+
+export function manageAmountVerification(e) {
+    clearAmountError();
+    const input = e.target.value;
+
+    const result = verifyAmount(input);
+
+    if(result === 'success'){
+        enableConvertButton()
+        return 'The amount was verified';
+    }else {
         disableConvertButton();
-        return '';
+        showAmountError(result);
+        return result;
     };
 };
 
@@ -119,7 +130,3 @@ function showAmountError(error) {
     amountField.classList.add('is-invalid');
 };
 
-function addConvertButtonEventListener() {
-    const convertButton = document.querySelector('#convert-button');
-    addEventListeners(convertButton, 'click', manageExchange)
-};

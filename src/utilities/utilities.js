@@ -1,13 +1,3 @@
-export function addEventListeners (target, eventType, triggerFunction) {
-    target.addEventListener(eventType, triggerFunction);
-};
-
-export function assignScrollToTopEventListener (targetId, eventType){
-    const target = document.querySelector(targetId);
-    target.addEventListener(eventType, () => {document.documentElement.scrollTop = 0});
-
-};
-
 export function getTodaysDate () {
     let today = new Date();
     let dd = today.getDate();

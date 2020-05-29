@@ -5,11 +5,7 @@ import {
 } from "./ui/form.js";
 
 export function initialize() {
-
-    window.onload = () => {
-        addInitialEventListeners();
-        fillCurrencySelect();
-        setMaxDateOfInput();        
-    };
-
+    addInitialEventListeners();
+    fillCurrencySelect();
+    setMaxDateOfInput();        
 };
