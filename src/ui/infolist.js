@@ -1,13 +1,20 @@
 import {getExchangeData} from '../services/exchangerates.js';
-import {assignScrollToTopEventListener} from '../utilities/utilities.js';
 
 export async function manageExchange () {
     const inputArray = fetchInput();
-    const exchangeData = await getExchangeData(inputArray[0], inputArray[1]);
-    fillInfoBoxWithLoading();
+    const exchangeData = waitForExchangeData (inputArray).then(
+        data => {
+            fillInfoBox(data, inputArray[2]);
+            appendToTopButton();
+        });
     makeInfoBoxVisible();
-    fillInfoBox(exchangeData, inputArray[2]);
-    appendToTopButton();
+    fillInfoBoxWithLoading();
+
+}
+
+async function waitForExchangeData (inputArray) {
+    const exchangeData = await getExchangeData(inputArray[0], inputArray[1]);
+    return exchangeData;
 }
 
 function fetchInput () {
@@ -20,7 +27,7 @@ function fetchInput () {
     return inputArray;
 };
 
-function amountFormatter(value) {
+export function amountFormatter(value) {
     let amount;
     if(value === ''){
         amount = '1';
@@ -122,5 +129,5 @@ function appendToTopButton() {
 
     infoBox.appendChild(toTopButton);
 
-    assignScrollToTopEventListener ('#topButton', 'click');
+    document.querySelector('#topButton').addEventListener('click', () => {document.documentElement.scrollTop = 0})
 };
