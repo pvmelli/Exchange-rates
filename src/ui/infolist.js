@@ -1,10 +1,26 @@
 import {getExchangeData} from '../services/exchangerates.js';
 
+class ExchangeRate {
+    constructor(data, amount) {
+        this.date = data.date;
+        this.base = data.base;
+        this.rates = data.rates;
+        this.amount = amount;
+    }
+    fillInfoBox(infoBox) {
+        infoBox.innerHTML = '';
+        setTitle(this.date, infoBox);
+        setTable(this.rates, this.base, this.amount, infoBox);
+    }
+}
+
 export async function manageExchange () {
     const inputArray = fetchInput();
-    const exchangeData = waitForExchangeData (inputArray).then(
+    waitForExchangeData (inputArray).then(
         data => {
-            fillInfoBox(data, inputArray[2]);
+            const infoBox = document.querySelector('#conversion-box');
+            const exchangerates = new ExchangeRate(data, inputArray[2]);
+            exchangerates.fillInfoBox(infoBox);
             appendToTopButton();
         });
     makeInfoBoxVisible();
@@ -53,29 +69,19 @@ function makeInfoBoxVisible() {
     infoBox.classList.remove('not-display');
 };
 
-function fillInfoBox(exchangeData, amount) {
-    const infoBox = document.querySelector('#conversion-box');
-    infoBox.innerHTML = '';
-    setTitle(exchangeData, infoBox);
-    setTable(exchangeData, amount, infoBox)
-
-};
-
-function setTitle(exchangeData, container) {
+function setTitle(date, container) {
     const title = document.createElement('h2');
-    title.innerText = `Exchange rates of ${exchangeData.date}`;
+    title.innerText = `Exchange rates of ${date}`;
 
     container.appendChild(title);
 };
 
-function setTable(exchangeData, amount, container){
-    const rates = exchangeData.rates;
-
+function setTable(rates, base, amount, container){
     const table = document.createElement('table');
     table.classList.add('table');
 
     const tableHead = document.createElement('thead');
-    fillHeadRow(['#', `${amount} ${exchangeData.base}`], tableHead);
+    fillHeadRow(['#', `${amount} ${base}`], tableHead);
     table.appendChild(tableHead);
 
     const tableBody = document.createElement('tbody');
