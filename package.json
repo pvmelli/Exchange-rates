@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/pvmelli/Exchange-rates#readme",
   "dependencies": {
-    "bootstrap": "^4.5.0",
-    "eslint": "^7.0.0"
+    "bootstrap": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.0",
@@ -30,6 +29,7 @@
     "@types/jest": "^25.2.3",
     "babel-jest": "^26.0.1",
     "cypress": "^4.6.0",
+    "eslint": "^7.1.0",
     "jest": "^26.0.1"
   }
 }
