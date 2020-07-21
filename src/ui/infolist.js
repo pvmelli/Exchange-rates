@@ -111,7 +111,7 @@ function fillARateBodyRow(titleData, valueData, amount, container) {
     const row = document.createElement('tr');
 
     const title = document.createElement('th');
-    title.innerText = '1 ' + titleData;
+    title.innerText = titleData;
     row.appendChild(title);
 
     const value = document.createElement('td');
