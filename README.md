@@ -4,7 +4,7 @@ Conversor de divisas conectado a [Foreign exchange rates API](https://exchangera
 ## [Live Demo](https://pvmelli.github.io/Exchange-rates/)
 
 * HTML5
-* CSS3 - Responsive
+* CSS3
 * Javascript
 * API
 * Bootstrap
