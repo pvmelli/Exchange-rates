@@ -1,5 +1,5 @@
 # Exchange-rates
-Conversor de divisas conectado a [Foreign exchange rates API](https://exchangeratesapi.io)
+###Debido a algunos cambios en la API utilizada, este sitio se halla en reconstrucción.
 
 ## [Live Demo](https://pvmelli.github.io/Exchange-rates/)
 
