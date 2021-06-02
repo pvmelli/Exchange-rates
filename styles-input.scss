@@ -1,0 +1,111 @@
+$background-gradient: linear-gradient(35deg,#11cdef,#1171ef);
+$fill-gradient: linear-gradient(#11cdef,#1171ef);
+$gradient-darker: #1171ef;
+$font-primary-color: #32325d;
+$font-lighter-color: #525f7f;
+$main-font: 'Noto Sans', sans-serif;
+
+.mobile-only {
+    display: none;
+}
+
+body {
+    color: $font-primary-color;
+    font-family: $main-font;
+
+    .background-gradient {
+        background: $background-gradient;
+    }
+
+    .pill-button {
+        border-radius: 50px;
+    }
+
+    .fill-up-effect {
+        position: relative;
+        overflow: hidden;
+        z-index: 4;
+        color: $fill-gradient;
+        transition: color 500ms;
+        &::before {
+            position: absolute;
+            top: 120%;
+            right: -25%;
+            width: 150%;
+            height: 150%;
+            content: ' ';
+            background: $fill-gradient;
+            transition: top 1s;
+            animation: 400ms linear 0s infinite normal forwards paused fillUp;
+            z-index: -1;
+        }
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            content: ' ';
+            background-color: #fff;
+            z-index: -2;
+        }
+        &:hover {
+            color: #fff;
+            &::before {
+                top: -25%;
+                animation-play-state: running;
+            }
+        }
+    }
+    
+    @keyframes fillUp {
+        0% {
+            transform: rotateZ(0deg);
+        }
+        25% {
+            transform: rotateZ(6deg);
+        }
+        50% {
+            transform: rotateZ(0deg);
+        }
+        75% {
+            transform: rotateZ(-6deg);
+        }
+        100% {
+            transform: rotateZ(0deg);
+        }
+    }
+
+    header {
+        height: 8vh;
+        font-weight: 700;
+        border-bottom:2px solid $gradient-darker;
+
+        nav {
+
+            a {
+                padding: 0 1em;
+                color: $font-lighter-color;
+                height: 100%;
+            }
+
+        }
+
+            #rate-button {
+                color: white;
+                padding: 0.2em 1.5em;
+                font-weight: 700;
+                width: 30%;
+                transition: width 1s;
+    
+                &:hover {
+                    background: white;
+                    border: 1px solid $gradient-darker;
+                    color: $font-primary-color;
+                    width: 40%;
+                }
+            }
+
+    }
+}
+

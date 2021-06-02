@@ -1,0 +1,92 @@
+.mobile-only {
+  display: none;
+}
+
+body {
+  color: #32325d;
+  font-family: "Noto Sans", sans-serif;
+}
+body .background-gradient {
+  background: linear-gradient(35deg, #11cdef, #1171ef);
+}
+body .pill-button {
+  border-radius: 50px;
+}
+body .fill-up-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 4;
+  color: linear-gradient(#11cdef, #1171ef);
+  transition: color 500ms;
+}
+body .fill-up-effect::before {
+  position: absolute;
+  top: 120%;
+  right: -25%;
+  width: 150%;
+  height: 150%;
+  content: " ";
+  background: linear-gradient(#11cdef, #1171ef);
+  transition: top 1s;
+  animation: 400ms linear 0s infinite normal forwards paused fillUp;
+  z-index: -1;
+}
+body .fill-up-effect::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  background-color: #fff;
+  z-index: -2;
+}
+body .fill-up-effect:hover {
+  color: #fff;
+}
+body .fill-up-effect:hover::before {
+  top: -25%;
+  animation-play-state: running;
+}
+@keyframes fillUp {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(6deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-6deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+body header {
+  height: 8vh;
+  font-weight: 700;
+  border-bottom: 2px solid #1171ef;
+}
+body header nav a {
+  padding: 0 1em;
+  color: #525f7f;
+  height: 100%;
+}
+body header #rate-button {
+  color: white;
+  padding: 0.2em 1.5em;
+  font-weight: 700;
+  width: 30%;
+  transition: width 1s;
+}
+body header #rate-button:hover {
+  background: white;
+  border: 1px solid #1171ef;
+  color: #32325d;
+  width: 40%;
+}
+
+/*# sourceMappingURL=styles-output.css.map */
