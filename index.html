@@ -5,14 +5,37 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Exchange rates</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--<link rel='stylesheet' type='text/css' media='screen' href='styles.css'>-->
+    <link rel='stylesheet' type='text/css' media='screen' href='styles-output.css'>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--<link rel='stylesheet' type='text/css' href='./node_modules/bootstrap/dist/css/bootstrap.css'> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <div class="login-modal not-display" id="login-modal">
+    <div class="wrapper">
+    <header class="desktop-only shadow-md flex flex-row">
+        <nav class="w-3/4 flex justify-end items-center">
+        <a class="fill-up-effect flex items-center">About us</a>
+        <a class="fill-up-effect flex items-center">About Currency API</a>
+        <a class="fill-up-effect flex items-center">About CoinGecko API</a>
+        </nav>
+        <div class="w-1/4 flex justify-center items-center rate-us rate-wrapper">
+            <button id="rate-button" class="pill-button background-gradient">Rate us</button>
+        </div>
+
+    </header>
+    <div id="mobile-menu" class="mobile-only">
+
+    </div>
+    </div>
+
+
+  <!--  <div class="login-modal not-display" id="login-modal">
         <div class="modal-content" id="modal-content">
             <div id="modal-title">
                 <button id="close-modal-button"><i class="fa fa-times"></i></button>
@@ -191,7 +214,7 @@
 
     <div class="not-display" id="conversion-box">
         
-        <!--here will go the conversion table-->
+        here will go the conversion table
         
     </div>
 
@@ -309,6 +332,8 @@
                 </div>
             </div>
         </div>
+
+        -->
 
 
     <script type="module" src='index.js'></script>
