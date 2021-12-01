@@ -5,4 +5,11 @@ export async function loadDataFromApi (date, base='EUR') {
     return data;
 };
 
+export async function loadCurrencyList () {
+    const response = await fetch ('../src/data/currencies.json');
+    let data = await response.json();
+    
+    return data.currencies;
+};
+
 

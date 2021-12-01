@@ -1,132 +1,141 @@
 import {getCurrencies} from '../services/exchangerates.js';
-import {
-    getTodaysDate
-} from '../utilities/utilities.js'
 
 import {manageExchange} from './infolist.js';
 
 export async function fillCurrencySelect () {
-    const currencyMenu = document.querySelector('#select-menu');
 
     const currencyList = await getCurrencies();
-    
-    currencyList.forEach(currency => {
+
+    const fiatCurrencies = Object.keys(currencyList.fiat);
+    const cryptoCurrencies = Object.keys(currencyList.crypto);
+
+    fillFiatSelect(fiatCurrencies);
+
+    fillCryptoSelect(cryptoCurrencies, fiatCurrencies);
+};
+
+function fillFiatSelect(fiatList) {
+
+    const fiatMenuFrom = document.querySelector('#fiat-from-options');
+    const fiatMenuTo = document.querySelector('#fiat-to-options');
+
+    fiatList.forEach((currency) => {
+        const currencyOptionFrom = createCurrencyOptions(currency);
+        const currencyOptionTo = createCurrencyOptions(currency);
+
+        fiatMenuFrom.appendChild(currencyOptionFrom);
+
+        fiatMenuTo.appendChild(currencyOptionTo);
+    });
+
+};
+
+function fillCryptoSelect(cryptoList, fiatList) {
+
+    const cryptoMenuFrom = document.querySelector('#crypto-from-options');
+    const cryptoMenuTo = document.querySelector('#crypto-to-options');
+
+    cryptoList.forEach((currency) => {
+        const currencyOptionFrom = createCurrencyOptions(currency);
+        const currencyOptionTo = createCurrencyOptions(currency);
+
+        cryptoMenuFrom.appendChild(currencyOptionFrom);
+
+        cryptoMenuTo.appendChild(currencyOptionTo);  
+    });
+
+    fiatList.forEach((currency) => {
         const currencyOption = createCurrencyOptions(currency);
 
-        currencyMenu.appendChild(currencyOption);
+        cryptoMenuTo.appendChild(currencyOption);
     });
+
 };
 
 function createCurrencyOptions(currency) {
     const option = document.createElement('option')
     option.classList.add('option');
-    option.setAttribute('value', currency);
-    option.innerText = currency;
+    option.setAttribute('value', currency.toUpperCase());//
+    option.innerText = currency.toUpperCase();
     return option;
 };
 
-export function setMaxDateOfInput() {
-    const dateField = document.querySelector('#dateInput');
+export function addFormTypesButtonEventListeners() {
+    document.querySelectorAll('.to-fiat-form').forEach((element) => {
+        element.addEventListener('click', activateFiatForm);
+    });
 
-    const todaysDate = getTodaysDate();
+    document.querySelectorAll('.to-crypto-form').forEach((element) => {
+        element.addEventListener('click', activateCryptoForm);
+    });
+};
 
-    dateField.setAttribute('max', todaysDate);
+function activateFiatForm () {
+    markFiatAsSelected();
+
+    document.querySelectorAll('.exchange-form').forEach((form) => {
+        form.classList.add('hidden');
+    });
+
+    const fiatForm = document.querySelector('#fiat-form');
+    fiatForm.classList.remove('hidden');
+};
+
+function activateCryptoForm () {
+
+    markCryptoAsSelected();
+
+    document.querySelectorAll('.exchange-form').forEach((form) => {
+        form.classList.add('hidden');
+    });
+
+    const cryptoForm = document.querySelector('#crypto-form');
+    cryptoForm.classList.remove('hidden');
+};
+
+function markFiatAsSelected() {
+    document.querySelectorAll('.options-button').forEach((element) => {
+        element.classList.add('options-non-selected');
+    });
+
+    document.querySelectorAll('.to-fiat-form').forEach((element) => {
+        element.classList.remove('options-non-selected');
+    });
+};
+
+function markCryptoAsSelected() {
+    document.querySelectorAll('.options-button').forEach((element) => {
+        element.classList.add('options-non-selected');
+    });
+
+    document.querySelectorAll('.to-crypto-form').forEach((element) => {
+        element.classList.remove('options-non-selected');
+    });
 }
 
+
 export function addFormEventListeners() {
-    const dateField = document.querySelector('#dateInput');
-    dateField.addEventListener('input', manageDateVerification);
+    document.querySelectorAll('.amount-input').forEach((amountField) => {
+        amountField.addEventListener('keydown', manageAmountVerification);
+    });    
 
-    const amountField = document.querySelector('#amountInput');
-    amountField.addEventListener('input', manageAmountVerification);
-
-    const convertButton = document.querySelector('#convert-button');
-    convertButton.addEventListener('click', manageExchange);
+    /*const convertButton = document.querySelector('#convert-button');
+    convertButton.addEventListener('click', manageExchange);*/
 };
 
-function verifyDate(input) {
-    input.reportValidity()
-
-    if(!input.reportValidity()){
-        return 'error';
-    }else{
-       return 'success';
-    }
-};
-
-export function manageDateVerification(e) {
-    const input = e.target;
-
-    const result = verifyDate(input);
-
-    if (result === 'error'){
-        disableConvertButton();
-        return 'There was an error';
-    } else {
-        enableConvertButton();
-        return 'The date was verified';
-    }
-};
-
-function verifyAmount(input) {
-    if(Boolean(input.search(','))){
-        input = input.replace(',', '.');
-    }
-
-    if (input.trim() === '' || Number(input.trim()) > 0){
-        return 'success';
-    }
-
-    const onlyNumbers = /[^0-9]/;
-    if (Number(input.trim()) < 0){
-        return 'This field cannot have a negative number';
-    };
-    if (onlyNumbers.test(input.trim())){
-        return 'This field can only contain numbers';
-    };
-
-    if (Number(input.trim()) === 0){
-        return 'This field cannot be 0';
-    };
-};
 
 export function manageAmountVerification(e) {
-    clearAmountError();
-    const input = e.target.value;
+    e.target.reportValidity();
 
-    const result = verifyAmount(input);
+    const charCode = (e.which) ? e.which : e.keyCode; 
 
-    if(result === 'success'){
-        enableConvertButton()
-        return 'The amount was verified';
-    }else {
-        disableConvertButton();
-        showAmountError(result);
-        return result;
-    };
-};
+    if (charCode >= 48 && charCode <= 57 || charCode == 46 || charCode == 8 || charCode == 190){
 
-function clearAmountError() {
-    const amountField = document.querySelector('#amountInput');
-    amountField.classList.remove('is-invalid');
+    }
+    else {
+        e.preventDefault();
+    }
 
 };
 
-function enableConvertButton() {
-    const convertButton = document.querySelector('#convert-button');
-    convertButton.disabled = false;
-};
-
-function disableConvertButton() {
-    const convertButton = document.querySelector('#convert-button');
-    convertButton.disabled = true;
-};
-
-function showAmountError(error) {
-    const amountErrorField = document.querySelector('#amount-error');
-    amountErrorField.innerText = error;
-
-    const amountField = document.querySelector('#amountInput');
-    amountField.classList.add('is-invalid');
-};
 

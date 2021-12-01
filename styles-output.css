@@ -2,15 +2,37 @@
   display: none;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: table;
+}
+
 body {
   color: #32325d;
   font-family: "Noto Sans", sans-serif;
+  font-size: 1em;
+}
+body .nunito {
+  font-family: "Nunito", sans-serif;
+}
+body img {
+  transition: 500ms;
+}
+body img:hover {
+  opacity: 0.7;
+}
+body .special-text {
+  color: #1171ef;
+  font-family: "Nunito", sans-serif;
 }
 body .background-gradient {
   background: linear-gradient(35deg, #11cdef, #1171ef);
 }
 body .pill-button {
   border-radius: 50px;
+  font-family: "Nunito", sans-serif;
 }
 body .fill-up-effect {
   position: relative;
@@ -65,6 +87,9 @@ body .fill-up-effect:hover::before {
     transform: rotateZ(0deg);
   }
 }
+body button:focus {
+  outline: none;
+}
 body header {
   height: 8vh;
   font-weight: 700;
@@ -87,6 +112,102 @@ body header #rate-button:hover {
   border: 1px solid #1171ef;
   color: #32325d;
   width: 40%;
+}
+body #page-content {
+  height: 100%;
+  max-height: 500vh;
+}
+body #page-content p {
+  text-indent: 1.5em;
+}
+body #page-content #converter-section {
+  padding: 10vh 5vw;
+  height: 70vh;
+}
+body #page-content #converter-section .options-button {
+  background: white;
+  width: 10vw;
+  font-weight: 800;
+  font-family: "Nunito", sans-serif;
+  padding: 0 1em;
+  transition: 500ms;
+}
+body #page-content #converter-section .options-non-selected {
+  opacity: 0.5;
+}
+body #page-content #converter-section .options-non-selected:hover {
+  opacity: 0.7;
+}
+body #page-content #converter-section form {
+  background-color: white;
+  height: 40vh;
+  transition: 500ms;
+}
+body #page-content #converter-section form input {
+  border-color: #1171ef;
+  height: 1.7em;
+  padding-left: 1vw;
+}
+body #page-content #converter-section form input:focus {
+  outline: none;
+}
+body #page-content #converter-section form select {
+  border-color: #1171ef;
+  height: 1.7em;
+  width: 10vw;
+  text-align-last: center;
+  -moz-text-align-last: center;
+}
+body #page-content #converter-section form select:focus {
+  outline: none;
+}
+body #page-content #converter-section form button {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: white;
+  opacity: 0.7;
+  transition: 500ms;
+}
+body #page-content #converter-section form button:hover {
+  opacity: 1;
+}
+body #page-content #about-section .analytics span {
+  transition: 500ms;
+}
+body #page-content #about-section .analytics span:hover {
+  color: #11cdef;
+}
+body #page-content #about-section button {
+  transition: 500ms;
+}
+body #page-content #about-section button:hover {
+  opacity: 0.7;
+}
+body #page-content #contact-section .contact-input {
+  border: 1px solid #11cdef;
+  transition: 300ms;
+}
+body #page-content #contact-section .contact-input:focus {
+  outline: none;
+  transform: scale(1.03);
+}
+body #page-content #contact-section button {
+  font-family: "Nunito", sans-serif;
+  transition: 500ms;
+}
+body #page-content #contact-section button:hover {
+  opacity: 0.7;
+}
+body #page-content #credits-section button {
+  transition: 500ms;
+}
+body #page-content #credits-section button:hover {
+  opacity: 0.7;
+}
+body #footer {
+  background-color: #32325d;
+  color: white;
+  display: table-row;
 }
 
 /*# sourceMappingURL=styles-output.css.map */

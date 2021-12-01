@@ -5,7 +5,10 @@ import {
     saveExchangeRatesDataToLocalStorage
 } from '../storage/storage.js';
 
-import {loadDataFromApi} from '../api/api.js';
+import {
+    loadDataFromApi,
+    loadCurrencyList
+} from '../api/api.js';
 
 export async function getCurrencies() {
     try {
@@ -17,17 +20,11 @@ export async function getCurrencies() {
         }
     } catch (error) {
         try {
-            const currencyData = await loadDataFromApi('latest');
+            const currencyData = await loadCurrencyList();
             
-            const currencies = Object.keys(currencyData.rates);
-            const currencyBase = currencyData.base;
-            currencies.push(currencyBase);
+            saveCurrencyListToLocalStorage ('list', currencyData);
 
-            const currencyList = currencies;
-            
-            saveCurrencyListToLocalStorage ('list', currencyList);
-
-            return currencyList;
+            return currencyData;
         }catch(e) {
             return null;
         };

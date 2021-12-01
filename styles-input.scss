@@ -1,5 +1,6 @@
 $background-gradient: linear-gradient(35deg,#11cdef,#1171ef);
 $fill-gradient: linear-gradient(#11cdef,#1171ef);
+$gradient-lighter: #11cdef;
 $gradient-darker: #1171ef;
 $font-primary-color: #32325d;
 $font-lighter-color: #525f7f;
@@ -9,9 +10,33 @@ $main-font: 'Noto Sans', sans-serif;
     display: none;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
 body {
     color: $font-primary-color;
     font-family: $main-font;
+    font-size: 1em;
+
+    .nunito {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    img {
+        transition: 500ms;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .special-text {
+        color: $gradient-darker;
+        font-family: 'Nunito', sans-serif;
+    }
 
     .background-gradient {
         background: $background-gradient;
@@ -19,6 +44,7 @@ body {
 
     .pill-button {
         border-radius: 50px;
+        font-family: 'Nunito', sans-serif;
     }
 
     .fill-up-effect {
@@ -76,6 +102,12 @@ body {
         }
     }
 
+    button {
+        &:focus {
+            outline: none;
+        }
+    }
+
     header {
         height: 8vh;
         font-weight: 700;
@@ -106,6 +138,130 @@ body {
                 }
             }
 
+    }
+
+    #page-content {
+        height: 100%;
+        max-height: 500vh;
+        p {
+            text-indent: 1.5em;
+        }
+        #converter-section {
+            padding: 10vh 5vw;
+            height: 70vh;
+
+            .options-button {
+                background: white;
+                width: 10vw;
+                font-weight: 800;
+                font-family: 'Nunito', sans-serif;
+                padding: 0 1em;
+                transition: 500ms;
+            }
+
+            .options-non-selected {
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+
+            form {
+                background-color: white;
+                height: 40vh;
+                transition: 500ms;
+
+                input {
+                    border-color: $gradient-darker;
+                    height: 1.7em;
+                    padding-left: 1vw;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                select {
+                    border-color: $gradient-darker;
+                    height: 1.7em;
+                    width: 10vw;
+                    text-align-last: center;
+                    -moz-text-align-last: center;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                button {
+                    font-family: 'Nunito', sans-serif;
+                    font-weight: 700;
+                    color: white;
+                    opacity: 0.7;
+                    transition: 500ms;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        #about-section {
+            .analytics {
+                span {
+                    transition: 500ms;
+                    &:hover {
+                        color: $gradient-lighter;
+                    }
+                }
+            }
+
+            button {
+                transition: 500ms;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        #contact-section {
+            .contact-input {
+                border: 1px solid $gradient-lighter;
+                transition: 300ms;
+
+                &:focus {
+                    outline:none;
+                    transform: scale(1.03);
+                }
+            }
+
+            button {
+                font-family: 'Nunito', sans-serif;
+                transition: 500ms;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        #credits-section {
+            button {
+                transition: 500ms;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    #footer {
+        background-color: $font-primary-color;
+        color: white;
+        display: table-row;
     }
 }
 
