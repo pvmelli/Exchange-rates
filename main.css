@@ -1,0 +1,259 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  padding: 1rem 1rem 0rem 0;
+}
+#page-header #logo img {
+  max-height: 4rem;
+}
+#page-header div {
+  display: flex;
+  align-items: center;
+}
+#page-header nav a {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #504d5e;
+  margin-left: 3rem;
+  transition: 0.3s;
+  text-decoration: none;
+}
+#page-header nav a:hover {
+  color: #614ad9;
+}
+#page-header nav:hover {
+  cursor: default;
+}
+#page-header #app-download-container {
+  margin-left: 3rem;
+}
+#page-header #app-download-container a {
+  font-size: 1rem;
+  background-color: #F0F0F0;
+  padding: 1rem;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+#page-header #app-download-container a:hover {
+  background-color: #614ad9;
+  color: white;
+  cursor: pointer;
+}
+
+#page-content .section {
+  display: flex;
+  align-content: center;
+  width: 100%;
+}
+#page-content .section-light {
+  background-color: white;
+}
+#page-content .section-darker {
+  background-color: #F0F0F0;
+}
+#page-content #about {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#page-content #about #about-text {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#page-content #about #about-text h1 {
+  font-size: 4rem;
+  font-weight: lighter;
+  margin-block-end: 0;
+  transition: 0.5s;
+  cursor: default;
+}
+#page-content #about #about-text h1:hover {
+  opacity: 0.6;
+}
+#page-content #about #about-text h1 b {
+  font-weight: lighter;
+  color: #614ad9;
+}
+#page-content #about #about-text #app-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding-right: 5rem;
+}
+#page-content #about #about-text #app-icons img {
+  max-width: 10rem;
+  width: 10rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#page-content #about #about-text #app-icons img:hover {
+  opacity: 0.6;
+}
+#page-content #about #about-graphics {
+  display: inline;
+  background-image: url("src/img/web.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30rem;
+  width: 40rem;
+  height: 40rem;
+  transform: 0.5s;
+  animation: rubberBand 1s;
+}
+#page-content #about #about-graphics #secondary-1 {
+  position: relative;
+  top: 3rem;
+  left: 5rem;
+  animation: fadeIn 2s infinite alternate;
+}
+#page-content #about #about-graphics #secondary-2 {
+  position: relative;
+  top: 15rem;
+  left: 15rem;
+  animation: fadeIn 3s infinite alternate;
+}
+#page-content #about #about-graphics #secondary-3 {
+  position: relative;
+  top: 17rem;
+  left: 1rem;
+  animation: fadeIn 1s infinite alternate;
+}
+#page-content #about #about-graphics .secondary {
+  max-width: 15rem;
+  width: 15rem;
+  border-radius: 20px;
+}
+#page-content #about #about-graphics .secondary:hover {
+  opacity: 0.5;
+}
+#page-content #converter {
+  justify-content: center;
+  background-color: #0E0C16;
+}
+#page-content #converter #converter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  margin: 5rem;
+}
+#page-content #converter #converter-form #converter-data {
+  display: flex;
+}
+#page-content #converter #converter-form #converter-data input {
+  font-size: 3rem;
+  width: 20rem;
+  border: 2px solid #614ad9;
+  border-radius: 40px;
+  padding: 1rem;
+}
+#page-content #converter #converter-form #converter-data #conversion-decoration {
+  font-size: 3rem;
+  padding: 0 5rem 0 5rem;
+  color: #F0F0F0;
+}
+#page-content #converter #converter-form #converter-data select {
+  font-size: 3rem;
+  border: 2px solid #614ad9;
+  border-radius: 40px;
+  padding: 1rem;
+}
+#page-content #converter #converter-form button {
+  display: flex;
+  justify-self: center;
+  background-color: #614ad9;
+  color: #0E0C16;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bolder;
+  border: none;
+  border-radius: 40px;
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  width: fit-content;
+  transition: 0.5s;
+}
+#page-content #converter #converter-form button:hover {
+  background-color: #0E0C16;
+  color: #F0F0F0;
+}
+#page-content #newsletter-ad {
+  padding-bottom: 3rem;
+}
+#page-content #newsletter-ad #newsletter-graphics img {
+  max-width: 50rem;
+  margin-left: 10rem;
+}
+#page-content #newsletter-ad #newsletter-text {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#page-content #newsletter-ad #newsletter-text h2 {
+  font-size: 4rem;
+  margin-left: -8rem;
+  color: #614ad9;
+}
+#page-content #newsletter-ad #newsletter-text #newsletter-form {
+  margin-left: -8rem;
+}
+#page-content #newsletter-ad #newsletter-text #newsletter-form input {
+  font-size: 2rem;
+  border: 2px solid #504d5e;
+  border-radius: 50px;
+  padding-left: 2rem;
+}
+#page-content #newsletter-ad #newsletter-text #newsletter-form input:focus {
+  border: 2px solid #614ad9;
+  outline: none;
+}
+#page-content #newsletter-ad #newsletter-text #newsletter-form button {
+  background-color: #504d5e;
+  color: #F0F0F0;
+  border: 2px solid #504d5e;
+  font-size: 2rem;
+  border-radius: 50px;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-left: -3rem;
+  transition: 0.5s;
+}
+#page-content #newsletter-ad #newsletter-text #newsletter-form button:hover {
+  background-color: #614ad9;
+  border: 2px solid #614ad9;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 2rem 2rem 0 2rem;
+}
+footer #footer-app img {
+  width: 10rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
