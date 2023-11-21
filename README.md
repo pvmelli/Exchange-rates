@@ -1,5 +1,5 @@
 # EZex: Currency converter
-### Debido a algunos cambios en la API utilizada, este sitio se halla en reconstrucción.
+### Los tests de este sitio estan en proceso de actualización.
 
 ## [Live Demo](https://pvmelli.github.io/Exchange-rates/)
 
