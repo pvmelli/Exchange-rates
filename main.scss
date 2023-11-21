@@ -205,6 +205,9 @@ body{
     #converter {
         justify-content: center;
         background-color: $color-black;
+        display: flex;
+        flex-direction: column;
+
         #converter-form{
             display: flex;
             flex-direction: column;
@@ -256,6 +259,48 @@ body{
                     color: $color-grey;
                 }
             }
+        }
+
+        #conversion-box{
+            justify-content: center;
+            text-align: center;
+            font-family: $accent-font;
+            display: none;
+            flex-direction: row;
+            margin-top: 0;
+            padding-top: 0;
+            transition: 0.5s;
+
+            .conversion-info {
+                margin: 0 4rem;
+                padding-top: 0;
+            }
+
+            h3{
+                color: $color-grey;
+                font-size: 4rem;
+                margin-top: 0;
+                margin-bottom: 0;
+
+            }
+
+            p{
+                font-size: 3rem;
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            #insert-conversion-rate {
+                color: $color-grey;
+                
+
+            }
+
+            #insert-conversion-result{
+                color: $color-accent;
+            }
+
+
         }
     }
 

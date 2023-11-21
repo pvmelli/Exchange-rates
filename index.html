@@ -64,23 +64,12 @@
         </div>
         <div style="height: 150px; overflow: hidden; background-color: #F0F0F0;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #0E0C16;"></path></svg></div>
         <div id="converter" class="section">
-            <form id="converter-form" data-aos="fade-up">
+            <form id="converter-form" data-aos="fade-up" onsubmit="return false">
                 <div id="converter-data">
                     <div id="conversion-base">
-                        <input type="number" id="base-number">
+                        <input type="number" id="base-number" min="1" minlength="1" step="any" required>
                         <select id="base-currency" name="base-currency">
-                            <option value="ARS">ARS</option>
-                            <option value="USD">USD</option>
-                            <option value="AUD">AUD</option>
-                            <option value="CAD">CAD</option>
-                            <option value="BOB">BOB</option>
-                            <option value="BRL">BRL</option>
-                            <option value="CLP">CLP</option>
-                            <option value="COP">COP</option>
-                            <option value="CLP">CRC</option>
-                            <option value="CLP">CUP</option>
-                            <option value="CNY">CNY</option>
-                            <option value="EUR">EUR</option>
+
                         </select>
                     </div>
                     <div id="conversion-decoration">
@@ -88,25 +77,25 @@
                     </div>
                     <div id="conversion-target">
                         <select id="target-currency" name="target-currency">
-                            <option value="ARS">ARS</option>
-                            <option value="USD">USD</option>
-                            <option value="AUD">AUD</option>
-                            <option value="CAD">CAD</option>
-                            <option value="BOB">BOB</option>
-                            <option value="BRL">BRL</option>
-                            <option value="CLP">CLP</option>
-                            <option value="COP">COP</option>
-                            <option value="CLP">CRC</option>
-                            <option value="CLP">CUP</option>
-                            <option value="CNY">CNY</option>
-                            <option value="EUR">EUR</option>
+
                         </select>
                     </div>
                 </div>
-            <button data-aos="fade-up">Convert</button>
+            <button id="convert-button" data-aos="fade-up">Convert</button>
                 
             </form>
-            <div id="converter-results"></div>
+            <div id="conversion-box" class="not-display">
+                <div id="result-conversion-rate" class="conversion-info">
+                    <h3>Conversion rate</h3>
+                    <p id="insert-conversion-rate"></p>
+                </div>
+
+                <div id="result-conversion" class="conversion-info">
+                    <h3>Conversion result</h3>
+                    <p id="insert-conversion-result"></p>
+                </div>
+
+            </div>
         </div>
         <div style="height: 150px; overflow: hidden; background-color: #0E0C16;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #F0F0F0;"></path></svg></div>
         <div id="newsletter-ad" class="section section-darker">

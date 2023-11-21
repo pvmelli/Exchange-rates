@@ -144,6 +144,8 @@ body {
 #page-content #converter {
   justify-content: center;
   background-color: #0E0C16;
+  display: flex;
+  flex-direction: column;
 }
 #page-content #converter #converter-form {
   display: flex;
@@ -191,6 +193,37 @@ body {
 #page-content #converter #converter-form button:hover {
   background-color: #0E0C16;
   color: #F0F0F0;
+}
+#page-content #converter #conversion-box {
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  display: none;
+  flex-direction: row;
+  margin-top: 0;
+  padding-top: 0;
+  transition: 0.5s;
+}
+#page-content #converter #conversion-box .conversion-info {
+  margin: 0 4rem;
+  padding-top: 0;
+}
+#page-content #converter #conversion-box h3 {
+  color: #F0F0F0;
+  font-size: 4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#page-content #converter #conversion-box p {
+  font-size: 3rem;
+  margin-top: 0;
+  padding-top: 0;
+}
+#page-content #converter #conversion-box #insert-conversion-rate {
+  color: #F0F0F0;
+}
+#page-content #converter #conversion-box #insert-conversion-result {
+  color: #614ad9;
 }
 #page-content #newsletter-ad {
   padding-bottom: 3rem;

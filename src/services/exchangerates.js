@@ -1,11 +1,10 @@
 import {
     loadCurrencyListFromLocalStorage,
-    saveCurrencyListToLocalStorage,
-    loadExchangeRatesDataFromLocalStorage,
-    saveExchangeRatesDataToLocalStorage
+    saveCurrencyListToLocalStorage
 } from '../storage/storage.js';
 
-import {loadDataFromApi} from '../api/api.js';
+import {loadDataFromApi,
+    loadCurrenciesFromApi} from '../api/api.js';
 
 export async function getCurrencies() {
     try {
@@ -17,15 +16,14 @@ export async function getCurrencies() {
         }
     } catch (error) {
         try {
-            const currencyData = await loadDataFromApi('latest');
-            
-            const currencies = Object.keys(currencyData.rates);
-            const currencyBase = currencyData.base;
-            currencies.push(currencyBase);
+            const currencyData = await loadCurrenciesFromApi();
 
-            const currencyList = currencies;
-            
-            saveCurrencyListToLocalStorage ('list', currencyList);
+            const currency_pairs = Object.values(currencyData.supported_codes);
+
+            const currencies = Object.fromEntries(currency_pairs);
+
+            saveCurrencyListToLocalStorage ('list', currencies);
+
 
             return currencyList;
         }catch(e) {
@@ -34,25 +32,10 @@ export async function getCurrencies() {
     };
 };
 
-export async function getExchangeData(date, base) {
-    try {
-        let exchangeData = loadExchangeRatesDataFromLocalStorage(date, base);
+export async function getExchangeData(amount, base, target) {
 
-        if (exchangeData === null) {
-            throw error;
-        } else {
-            return exchangeData;
-        }
-    } catch(error) {
-        try {
-            const exchangeData = await loadDataFromApi(date, base);
-
-            saveExchangeRatesDataToLocalStorage (date, base, exchangeData);
+            const exchangeData = await loadDataFromApi(amount, base, target);
             
             return exchangeData;
-        }catch(e) {
-            return null;
-        };
-    };
 
 };
