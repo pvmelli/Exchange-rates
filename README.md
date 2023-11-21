@@ -1,5 +1,5 @@
 # EZex: Currency converter
-### Los tests de este sitio estan en proceso de actualización.
+Una calculadora de divisas comoda y sencilla, conectada a Exchange Rates API :moneybag: :chart:
 
 ## [Live Demo](https://pvmelli.github.io/Exchange-rates/)
 
